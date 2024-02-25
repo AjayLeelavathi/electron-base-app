@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Template for the new android layout">
+      <meta name="author" content="Andrew Henry">
+      <link rel="icon" href="#">
+      <title>Bootstrap Nav Template</title>
+      <link rel="stylesheet" href="../../style/bootstrap/main.min.css">
+      <link rel="stylesheet" href="../../style/main.css">
+      <!-- Google Icons -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+      <link rel="stylesheet" href="../../plugin/datatable/datatable.css">
+   </head>
+   <body>
+      <!-- As a heading -->
+      <nav class="navbar fixed-top navbar-light bg-light">
+         <h2 class="navbar-brand mb-0">Medicial Store</h2>
+      </nav>
+      <!-- Begin page content -->
+      <div class="container-fluid">
+         <!-- Create page -->
+         <div id="page-create" class="active">
+          <div class="row">
+            <div class="col-md-6">
+              <h1>Category</h1>
+            </div>
+            <div class="col-md-6">
+              <a href="./add.ejs" class="btn btn-primary">Add Category</a>
+            </div>
+          </div>
+            <table id="category_list" class="display">
+              <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Category Name</th>
+                    <th>Category Description</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+         </div>
+      </div>
+
+      <!-- Bottom Nav Bar -->
+      <%- include('../layouts/footer') %>
+      <!-- Bootstrap core JavaScript -->
+      <script>window.$ = window.jQuery = require('jquery');</script>
+      <script src="../../js/jquery/popper.min.js"></script>
+      <script src="../../js/bootstrap/main.min.js"></script>
+      <script src="../../plugin/datatable/main.js"></script>
+      <script defer src="../../render/category/index.js"></script>
+      <!-- <script src="../../viewscripts/home/index_preload.js"></script> -->
+      <!-- JS needed for this page -->
+      <!-- <script src="../../js/main.js"></script> -->
+   </body>
+</html>
+

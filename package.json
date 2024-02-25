@@ -1,0 +1,22 @@
+{
+  "name": "electron-base-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^29.0.1"
+  },
+  "dependencies": {
+    "@electron/rebuild": "^3.6.0",
+    "ejs-electron": "^3.0.0",
+    "jquery": "^3.7.1",
+    "promise-mysql": "^5.2.0",
+    "sqlite3": "^5.1.7"
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Template for the new android layout">
+      <meta name="author" content="Andrew Henry">
+      <link rel="icon" href="#">
+      <title>Bootstrap Nav Template</title>
+      <link rel="stylesheet" href="../../style/bootstrap/main.min.css">
+      <link rel="stylesheet" href="../../style/main.css">
+      <!-- Google Icons -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+   </head>
+   <body>
+      <!-- As a heading -->
+      <nav class="navbar fixed-top navbar-light bg-light">
+         <h2 class="navbar-brand mb-0">Medicial Store</h2>
+      </nav>
+      <!-- Begin page content -->
+      <div class="container-fluid">
+         <!-- Create page -->
+         <div id="page-create" class="active">
+           <h1>Category</h1>
+            <form id="category_form">
+               <div class="form-row">
+                  <div class="form-group col-md-2">
+                     <label for="inputEmail4" class="col-form-label">Name</label>
+                     <input type="text" name="category_name" id="category_name" class="form-control" id="inputEmail4" placeholder="Name">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                     <label for="inputPassword4" class="col-form-label">Description</label>
+                     <textarea name="category_description" id="category_description" class="form-control" placeholder="Description"></textarea>
+                  </div>
+                </div>
+               </div>
+               <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+         </div>
+      </div>
+
+      <!-- Bottom Nav Bar -->
+      <%- include('../layouts/footer') %>
+      <!-- Bootstrap core JavaScript -->
+      <script>window.$ = window.jQuery = require('jquery');</script>
+      <script src="../../js/jquery/popper.min.js"></script>
+      <script src="../../js/bootstrap/main.min.js"></script>
+      <script src="../../plugin/validation/validation.js"></script>
+      <script defer src="../../render/category/add.js"></script>
+      <!-- <script src="../../viewscripts/home/index_preload.js"></script> -->
+      <!-- JS needed for this page -->
+      <!-- <script src="../../js/main.js"></script> -->
+   </body>
+</html>
+
