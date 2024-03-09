@@ -20,16 +20,22 @@
                   <!-- DataTales Example -->
                   <div class="card shadow mb-4">
                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Category List</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Product List</h6>
                      </div>
                      <div class="card-body">
                         <div class="table-responsive">
-                           <table class="table table-bordered" id="category_list" width="100%" cellspacing="0">
+                           <table class="table table-bordered" id="product_list" width="100%" cellspacing="0">
                               <thead>
                                  <tr>
                                     <th>Id</th>
+                                    <th>Qr Code</th>
+                                    <th>Category Name</th>
                                     <th>Name</th>
-                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Tax Amount</th>
+                                    <th>Tax Type</th>
+                                    <th>Stock Out</th>
+                                    <th>Status</th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -56,6 +62,6 @@
       <!-- <script src="../../admin/vendor/jquery/jquery.min.js"></script> -->
       <%- include('../layouts/footer_js') %>
       <!-- <script src="../../plugin/datatable/main.js"></script> -->
-      <script defer src="../../render/category/index.js"></script>
+      <script defer src="../../render/product/index.js"></script>
    </body>
 </html>

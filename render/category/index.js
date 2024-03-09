@@ -12,8 +12,9 @@ function renderLists(tasks) {
         <td>`+t.description+`</td>
       </tr>`
   });
-    $('#category_list tbody').append(html_value);
-    $('#category_list').DataTable();
+  // console.log(html_value);
+  $('#category_list tbody').append(html_value);
+  $('#category_list').DataTable();
 }
 
 window.addEventListener('load', function() 
