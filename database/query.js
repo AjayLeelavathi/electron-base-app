@@ -57,6 +57,25 @@ const addDiscount = async (discount) => {
   }
 };
 
+const getCustomer = async () => {
+  try {
+    const result = await getAllRecord("SELECT * FROM tbl_customer where delete_status = 0");
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const addCustomer = async (customer) => {
+  try {
+    // console.log(product)
+    const result = await insertRecord(`INSERT INTO tbl_customer (name,address,phone_number) VALUES ('${customer.name}','${customer.address}','${customer.phone_number}')`);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getAllRecord = async(query) =>{
   const conn = await getConnection();
   return new Promise(res => {
@@ -78,5 +97,7 @@ module.exports = {
   getProduct,
   addProduct,
   getDiscount,
-  addDiscount
+  addDiscount,
+  getCustomer,
+  addCustomer
 };
