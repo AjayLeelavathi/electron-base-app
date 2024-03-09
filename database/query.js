@@ -38,6 +38,25 @@ const addProduct = async (product) => {
   }
 };
 
+const getDiscount = async () => {
+  try {
+    const result = await getAllRecord("SELECT tbl_discount.*,tbl_product.id as product_id,tbl_product.name as product_name FROM tbl_discount INNER JOIN tbl_product ON tbl_discount.product_id = tbl_product.id where tbl_discount.delete_status = 0");
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const addDiscount = async (discount) => {
+  try {
+    // console.log(product)
+    const result = await insertRecord(`INSERT INTO tbl_discount (name,product_id,discount_type,discount_value,status) VALUES ('${discount.name}','${discount.product_id}','${discount.discount_type}','${discount.discount_value}','${discount.status}')`);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getAllRecord = async(query) =>{
   const conn = await getConnection();
   return new Promise(res => {
@@ -57,5 +76,7 @@ module.exports = {
   getCategory,
   addCategory,
   getProduct,
-  addProduct
+  addProduct,
+  getDiscount,
+  addDiscount
 };

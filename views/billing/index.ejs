@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+   <%- include('../layouts/header') %>
+   <link rel="stylesheet" href="../../style/billing.css">
+   <body id="page-top">
+      <!-- Page Wrapper -->
+      <div id="wrapper">
+         <!-- Sidebar -->
+         <%- include('../layouts/sidebar') %>
+         <!-- End of Sidebar -->
+         <!-- Content Wrapper -->
+         <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+               <!-- Topbar -->
+               <%- include('../layouts/topbar') %>
+               <!-- End of Topbar -->
+               <!-- Begin Page Content -->
+               <div class="container-fluid p-0">
+                  <div class="row">
+                     <div class="col-md-8">
+                        <h1>Product</h1>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="row" id="product-list-table">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="row">
+                           <div class="col-lg-12">
+                              <div class="card">
+                                 <div class="card-body">
+                                    <div class="invoice-title">
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <h4 class="float-end font-size-15">
+                                                Invoice : <span class="invoice_id_1"></span> 
+                                                <!-- <span class="badge bg-success font-size-12 ms-2">Paid</span> -->
+                                             </h4>
+                                             <div class="mb-4">
+                                                <h2 class="mb-1 text-muted">Bootdey.com</h2>
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="text-muted text-sm-end">
+                                                <div class="invoice-no-div">
+                                                   <h5 class="font-size-15 mb-1">Invoice No:</h5>
+                                                   <p><span class="invoice_id_2"></span></p>
+                                                </div>
+                                                <div class="invoice-date-div">
+                                                   <h5 class="font-size-15 mb-1">Invoice Date:</h5>
+                                                   <p><span class="invoice_date"></span></p>
+                                                </div>
+                                                <div class="invoice-order-div">
+                                                   <h5 class="font-size-15 mb-1">Order No:</h5>
+                                                   <p><span class="order_no"></span></p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="container-fluid" id="user_check">
+                                          <div class="row">
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input class="form-check-input" name="new_user_check" type="checkbox" value="1" id="new_user_check">
+                                                   <label class="form-check-label new_user_label" for="new_user_check">
+                                                   New User
+                                                   </label>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="container-fluid p-0" id="existing_user_div">
+                                          <div class="row">
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <label for="customer_list">Customer List</label>
+                                                   <select class="form-control" id="customer_list">
+                                                   </select>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="container-fluid p-0" id="new_user_div" style="display: none;">
+                                          <div class="row">
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <label for="customer_name">Customer Name</label>
+                                                   <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder="Customer Name">
+                                                </div>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <label for="phone_number">Phone Number</label>
+                                                   <input type="number" name="customer_phone_number" class="form-control" id="customer_phone_number" placeholder="Phone Number">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                   <label for="customer_address">Address</label>
+                                                   <textarea name="customer_address" class="form-control" id="customer_address" rows="2"></textarea>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <hr class="my-4">
+                                    <!-- end row -->
+                                    <div class="py-2">
+                                       <h5 class="font-size-15">Order Summary</h5>
+                                       <div class="table-responsive">
+                                          <table class="table align-middle table-nowrap table-centered mb-0">
+                                             <thead>
+                                                <tr>
+                                                   <th style="width: 70px;">No.</th>
+                                                   <th>Item</th>
+                                                   <th>Price</th>
+                                                   <th>Quantity</th>
+                                                   <th>Discount</th>
+                                                   <th class="text-end" style="width: 120px;">Total</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody id="invoice_view_body">
+                                                <!-- <tr>
+                                                   <th scope="row">01</th>
+                                                   <td>
+                                                      <div>
+                                                         <h5 class="text-truncate font-size-14 mb-1">Black Strap A012</h5>
+                                                         <p class="text-muted mb-0">Watch, Black</p>
+                                                      </div>
+                                                   </td>
+                                                   <td>$ 245.50</td>
+                                                   <td>1</td>
+                                                   <td class="text-end">$ 245.50</td>
+                                                   </tr> -->
+                                             </tbody>
+                                             <tfoot>
+                                                <tr>
+                                                   <th scope="row" colspan="5" class="text-end">Sub Total</th>
+                                                   <td class="text-end"><span id="sub_total_id">-</span></td>
+                                                </tr>
+                                                <!-- end tr -->
+                                                <!-- <tr>
+                                                   <th scope="row" colspan="5" class="border-0 text-end">
+                                                      Discount :
+                                                   </th>
+                                                   <td class="border-0 text-end"><span id="discount_id"></span></td>
+                                                   </tr> -->
+                                                <!-- end tr -->
+                                                <!--                                              <tr>
+                                                   <th scope="row" colspan="4" class="border-0 text-end">
+                                                      Tax
+                                                   </th>
+                                                   <td class="border-0 text-end">$12.00</td>
+                                                   </tr> -->
+                                                <!-- end tr -->
+                                                <tr>
+                                                   <th scope="row" colspan="5" class="border-0 text-end">Total</th>
+                                                   <td class="border-0 text-end">
+                                                      <h4 class="m-0 fw-semibold"><span id="total_id">-</span></h4>
+                                                   </td>
+                                                </tr>
+                                             </tfoot>
+                                          </table>
+                                          <!-- end table -->
+                                       </div>
+                                       <!-- end table responsive -->
+                                       <div class="d-print-none mt-4">
+                                          <div class="float-end">
+                                             <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
+                                             <a href="#" class="btn btn-primary w-md" id="save_order">Save</a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- end col -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- End of Main Content -->
+         </div>
+         <!-- End of Content Wrapper -->
+      </div>
+      <!-- End of Page Wrapper -->
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+      </a>
+      <%- include('../layouts/model') %>
+      <!-- Logout Modal-->
+      <!-- Bootstrap core JavaScript-->
+      <!-- <script src="../../admin/vendor/jquery/jquery.min.js"></script> -->
+      <%- include('../layouts/footer_js') %>
+      <!-- <script src="../../plugin/datatable/main.js"></script> -->
+      <!-- <script defer src="../../render/billing/index.js"></script> -->
+      <!-- <script defer src="../../render/category/add.js"></script> -->
+   </body>
+</html>

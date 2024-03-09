@@ -18,16 +18,19 @@
    <hr class="sidebar-divider">
    <!-- Heading -->
    <div class="sidebar-heading">
-      Interface
+      Master
    </div>
    <!-- Nav Item - Pages Collapse Menu -->
    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-         aria-expanded="true" aria-controls="collapseOne">
+      <a class="nav-link" href="../billing/index.ejs"><i class="fas fa-list"></i><span>Billing</span></a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+         aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-fw fa-cog"></i>
       <span>Category</span>
       </a>
-      <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
          <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="../category/add.ejs">Add</a>
             <a class="collapse-item" href="../category/index.ejs">List</a>
@@ -35,15 +38,28 @@
       </div>
    </li>
    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-         aria-expanded="true" aria-controls="collapseTwo">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+         aria-expanded="true" aria-controls="collapseThree">
       <i class="fas fa-cart-plus"></i>
       <span>Product</span>
       </a>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
          <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="../product/add.ejs">Add</a>
             <a class="collapse-item" href="../product/index.ejs">List</a>
+         </div>
+      </div>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+         aria-expanded="true" aria-controls="collapseFour">
+      <i class="fas fa-percent"></i>
+      <span>Discount</span>
+      </a>
+      <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+         <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="../discount/add.ejs">Add</a>
+            <a class="collapse-item" href="../discount/index.ejs">List</a>
          </div>
       </div>
    </li>
