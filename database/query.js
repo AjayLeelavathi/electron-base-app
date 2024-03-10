@@ -121,6 +121,15 @@ const getOrder = async () => {
   }
 };
 
+const getUser = async () => {
+  try {
+    const result = await getAllRecord(`SELECT * FROM tbl_user`);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getAllRecord = async(query) =>{
   const conn = await getConnection();
   return new Promise(res => {
@@ -166,4 +175,5 @@ module.exports = {
   getDiscountById,
   addOrder,
   getOrder,
+  getUser,
 };

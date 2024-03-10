@@ -20,39 +20,41 @@
                   <!-- DataTales Example -->
                   <div class="card shadow mb-4">
                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Add Category</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Add User</h6>
                      </div>
                      <div class="card-body">
-                        <!-- <form id="category_form">
+                        <form id="user_form">
                            <div class="form-row">
-                              <div class="form-group col-md-2">
-                                 <label for="inputEmail4" class="col-form-label">Name</label>
-                                 <input type="text" name="category_name" id="category_name" class="form-control" id="inputEmail4" placeholder="Name">
+                              <div class="form-group col-md-6">
+                                 <label for="name" class="col-form-label">User Name</label>
+                                 <input type="text" name="user_name" class="form-control" id="user_name" placeholder="User Name">
                               </div>
-                            </div>
+                              <div class="form-group col-md-6">
+                                 <label for="email" class="col-form-label">Email</label>
+                                 <input name="email" id="email" class="form-control" placeholder="Email" />
+                              </div>
+                           </div>
+                           <div class="form-row">
+                              <div class="form-group col-md-6">
+                                 <label for="password" class="col-form-label">Password</label>
+                                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                              </div>
+                              <div class="form-group col-md-6">
+                                 <label for="confirm_password" class="col-form-label">Confirm Password</label>
+                                 <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password">
+                              </div>
+                           </div>
                             <div class="form-row">
-                              <div class="form-group col-md-4">
-                                 <label for="inputPassword4" class="col-form-label">Description</label>
-                                 <textarea name="category_description" id="category_description" class="form-control" placeholder="Description"></textarea>
-                              </div>
-                            </div>
-                           </div>
-                           <button type="submit" class="btn btn-primary">Create</button>
-                        </form> -->
-                        <form id="category_form">
-                           <div class="form-row">
                               <div class="form-group col-md-6">
-                                 <label for="name" class="col-form-label">Category Name</label>
-                                 <input type="text" name="category_name" id="category_name" class="form-control" id="inputEmail4" placeholder="Name">
+                                 <label for="user_role" class="col-form-label">User Role</label>
+                                 <select class="custom-select" name="user_role" id="user_role">
+                                    <option value="">Select Role</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">User</option>
+                                 </select>
                               </div>
                            </div>
-                           <div class="form-row">
-                              <div class="form-group col-md-6">
-                                 <label for="password" class="col-form-label">Category Description</label>
-                                 <textarea name="category_description" id="category_description" class="form-control" placeholder="Description"></textarea>
-                              </div>
-                           </div>
-                           <button type="submit" id="create_category" class="btn btn-primary">Create Category</button>
+                           <button type="submit" id="create_user" class="btn btn-primary">Create User</button>
                         </form>
                      </div>
                   </div>
@@ -75,6 +77,6 @@
       <%- include('../layouts/footer_js') %>
       <!-- <script src="../../plugin/datatable/main.js"></script> -->
       <script src="../../plugin/validation/validation.js"></script>
-      <script defer src="../../render/category/add.js"></script>
+      <script defer src="../../render/product/add.js"></script>
    </body>
 </html>
