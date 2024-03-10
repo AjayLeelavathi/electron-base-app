@@ -112,6 +112,15 @@ const addOrder = async (order) => {
   }
 };
 
+const getOrder = async () => {
+  try {
+    const result = await getAllRecord(`SELECT tbl_order.id as list_id,tbl_order.order_id,tbl_order.invoice_id,tbl_order.customer_id,tbl_order.order_date,tbl_order.items,tbl_order.sub_total,tbl_order.discount,tbl_order.total,tbl_order.payment_mode,tbl_order.paid,tbl_order.delete_status,tbl_customer.id,tbl_customer.name FROM tbl_order INNER JOIN tbl_customer ON tbl_order.customer_id = tbl_customer.id where tbl_order.delete_status = 0`);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getAllRecord = async(query) =>{
   const conn = await getConnection();
   return new Promise(res => {
@@ -156,4 +165,5 @@ module.exports = {
   getProductById,
   getDiscountById,
   addOrder,
+  getOrder,
 };
