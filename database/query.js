@@ -76,6 +76,42 @@ const addCustomer = async (customer) => {
   }
 };
 
+const getInvoiceCount = async () => {
+  try {
+    const result = await getAllRecord("SELECT count(*) as invoice_count FROM tbl_order");
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getProductById = async (product_id) => {
+  try {
+    const result = await getOneRecord(`SELECT * FROM tbl_product where id = ${product_id}`);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getDiscountById = async (product_id) => {
+  try {
+    const result = await getAllRecord(`SELECT * FROM tbl_discount where product_id = ${product_id}`);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const addOrder = async (order) => {
+  try {
+    const result = await insertRecord(`INSERT INTO tbl_order (order_id,invoice_id,customer_id,order_date,items,sub_total,tax,tax_type,discount,discount_type,total,payment_mode,paid) VALUES ('${order.order_id}','${order.invoice_id}','${order.customer_id}','${order.order_date}','${order.items}','${order.sub_total}','${order.tax}','${order.tax_type}','${order.discount}','${order.discount_type}','${order.total}','${order.payment_mode}','${order.paid}')`);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getAllRecord = async(query) =>{
   const conn = await getConnection();
   return new Promise(res => {
@@ -85,10 +121,26 @@ const getAllRecord = async(query) =>{
   });
 };
 
+const getOneRecord = async(query) =>{
+  const conn = await getConnection();
+  return new Promise(res => {
+      conn.get(query, (err, rows) => {
+        res(rows);
+      });
+  });
+};
+
 const insertRecord = async(query) =>{
   const conn = await getConnection();
-  conn.run(query);
-  return true;
+  return new Promise((resolve, reject) => {
+      conn.run(query, function(err) {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(this.lastID);
+    });
+  });
 };
 
 module.exports = {
@@ -99,5 +151,9 @@ module.exports = {
   getDiscount,
   addDiscount,
   getCustomer,
-  addCustomer
+  addCustomer,
+  getInvoiceCount,
+  getProductById,
+  getDiscountById,
+  addOrder,
 };

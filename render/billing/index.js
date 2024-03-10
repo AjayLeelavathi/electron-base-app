@@ -6,12 +6,12 @@ const invoice_date  = document.querySelector(".invoice_date");
 let lists = [];
 let count = 0;
 let product_details = [];
-let product_array = [];
-let customer_list = [];
-let invoice_count = 0;
-let initial_value = "";
-let order_name    = "";
-let invoice_name  = "";
+let product_array   = [];
+let customer_list   = [];
+let invoice_count   = 0;
+let initial_value   = "";
+let order_name      = "";
+let invoice_name    = "";
 let today = new Date().toISOString().slice(0, 10);
 let customer_id = 0;
 
@@ -32,7 +32,6 @@ function renderLists(tasks) {
                                 <p class="product-price">&#8377;`+t.price+`</p>
                             </div>
                             <div class="div-2">
-                               	<p class="product-sell">`+t.quantity+`</p>
                                 <p class="product-add"><a href="" class="product_add_btn" data-product-id="`+t.id+`">Add +</a></p>
                             </div>
                         </div>
@@ -53,13 +52,13 @@ async function addProduct(product_id)
   var discount = 0;
   if(discount_details.length > 0)
   {
-    if(discount_details[0].discount_type == 2)
+    if(discount_details[0].discount_type == 1)
     {
-      discount = parseInt(discount_details[0].rate);
+      discount = parseInt(discount_details[0].discount_value);
     }
-    else if(discount_details[0].discount_type == 1)
+    else if(discount_details[0].discount_type == 2)
     {
-      discount = parseInt(discount_details[0].percentage)/100*product_details.price;
+      discount = parseInt(discount_details[0].discount_value)/100*product_details.discount_value;
     }
   }
   if(product_array.length != 0)
@@ -149,10 +148,13 @@ async function saveOrder()
           items: JSON.stringify(product_array),
           sub_total: sub_total,
           discount: 0,
+          discount_type: 1,
+          tax: 0,
+          tax_type: 1,
           total: total,
           payment_mode: 1,
+          paid:1,
           status: 1,
-          create_at: today,
         };
         let result = await addOrder(order_data);
         if(result)
@@ -173,10 +175,13 @@ async function saveOrder()
           items: JSON.stringify(product_array),
           sub_total: sub_total,
           discount: 0,
+          discount_type: 1,
+          tax: 0,
+          tax_type: 1,
           total: total,
           payment_mode: 1,
+          paid:1,
           status: 1,
-          create_at: today,
         };
         let result = await addOrder(order_data);
         if(result)

@@ -200,7 +200,32 @@
       <!-- <script src="../../admin/vendor/jquery/jquery.min.js"></script> -->
       <%- include('../layouts/footer_js') %>
       <!-- <script src="../../plugin/datatable/main.js"></script> -->
-      <!-- <script defer src="../../render/billing/index.js"></script> -->
-      <!-- <script defer src="../../render/category/add.js"></script> -->
+      <script defer src="../../render/billing/index.js"></script>
+      <script type="text/javascript">
+         $(document).on("click", '.product_add_btn', function(e) {
+            e.preventDefault();
+            var product_id = $(this).data("product-id");
+            addProduct(product_id);
+         });
+         $(document).ready(function(){
+            $("#save_order").on('click',function(e){
+               e.preventDefault();
+               saveOrder();
+            })
+            $("#new_user_check").click(function () 
+            {
+               if($(this).is(":checked")) 
+               {
+                  $("#new_user_div").css("display", "block");
+                  $("#existing_user_div").css("display", "none");
+               }
+               else 
+               {
+                  $("#new_user_div").css("display", "none");
+                  $("#existing_user_div").css("display", "block");
+               }
+           });
+         })
+      </script>
    </body>
 </html>
