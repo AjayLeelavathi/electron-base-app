@@ -1,4 +1,4 @@
-const  {getProduct} = require('../../database/query');
+const  {getProduct,deleteProduct} = require('../../database/query');
 const list_table    = document.querySelector("#product_list");
 let lists = [];
 
@@ -21,6 +21,7 @@ function renderLists(tasks) {
         <td>`+tax_type+`</td>
         <td>`+t.stack_out+`</td>
         <td>`+status+`</td>
+        <td class='text-center'><a class="btn btn-success me-1 delete_product" data-id=`+t.id+`><i class="fa fa-trash"></i></a></td>
       </tr>`;
       count_id++;
   });
@@ -35,6 +36,13 @@ window.addEventListener('load', function()
 
 async function getProductData() 
 {
+  $("#product_list tbody").empty();
   lists = await getProduct();
   renderLists(lists);
+}
+
+async function deleteProductData(id) 
+{
+  let delete_product = await deleteProduct(id);
+  getProductData();
 }

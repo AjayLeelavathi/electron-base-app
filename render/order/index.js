@@ -1,4 +1,4 @@
-const  {getOrder} = require('../../database/query');
+const  {getOrder,deleteOrder} = require('../../database/query');
 let lists = [];
 
 function renderLists(tasks) {
@@ -20,7 +20,7 @@ function renderLists(tasks) {
         <td>`+payment_mode+`</td>
         <td>`+product_array.toString()+`</td>
         <td>`+paid_status+`</td>
-        <td><a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a><a href="" class="btn btn-success me-1 ml-1 mr-1"><i class="fas fa-eye"></i></a><a href="" class="btn btn-success me-1 delete_order" data-id="`+t.list_id+`"><i class="fas fa-trash"></i></a></td>
+        <td><a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a><a href="" class="btn btn-success me-1 ml-1 mr-1"><i class="fas fa-eye"></i></a><a class="btn btn-success me-1 delete_order" data-id="`+t.list_id+`"><i class="fas fa-trash"></i></a></td>
       </tr>`;
       count++;
   });
@@ -38,16 +38,6 @@ function renderLists(tasks) {
     });
 }
 
-async function deleteOrder(id)
-{
-  const update_data = 
-  {
-    status: 0,
-  };
-  let order = await updateOrder(update_data,id);
-  // console.log(order);
-  // return id;
-}
 
 window.addEventListener('load', function() 
 {
@@ -56,6 +46,13 @@ window.addEventListener('load', function()
 
 async function getOrderData() 
 {
+  $("#invoice_list tbody").empty();
   lists = await getOrder();
   renderLists(lists);
+}
+
+async function deleteOrderData(id)
+{
+  let order = await deleteOrder(id);
+  getOrderData();
 }

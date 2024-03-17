@@ -33,6 +33,7 @@
                                     <th>Discount type</th>
                                     <th>Discount Value</th>
                                     <th>Status</th>
+                                    <th>Action</th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -58,5 +59,11 @@
       <!-- Bootstrap core JavaScript-->
       <%- include('../layouts/footer_js') %>
       <script defer src="../../render/discount/index.js"></script>
+      <script type="text/javascript">
+         $(document).on('click','.delete_discount',function(){
+            let id = $(this).data('id');
+            deleteDiscountData(id);
+         });
+      </script>
    </body>
 </html>

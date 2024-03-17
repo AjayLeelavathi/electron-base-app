@@ -66,6 +66,15 @@ const addProduct = async (product) => {
   }
 };
 
+const deleteProduct = async (id) => {
+  try {
+    const result = await insertRecord(`UPDATE tbl_product SET delete_status = 1 WHERE id = ${id}`);
+    return true;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getDiscount = async () => {
   try {
     const result = await getAllRecord("SELECT tbl_discount.*,tbl_product.id as product_id,tbl_product.name as product_name FROM tbl_discount INNER JOIN tbl_product ON tbl_discount.product_id = tbl_product.id where tbl_discount.delete_status = 0");
@@ -85,6 +94,15 @@ const addDiscount = async (discount) => {
   }
 };
 
+const deleteDiscount = async (id) => {
+  try {
+    const result = await insertRecord(`UPDATE tbl_discount SET delete_status = 1 WHERE id = ${id}`);
+    return true;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getCustomer = async () => {
   try {
     const result = await getAllRecord("SELECT * FROM tbl_customer where delete_status = 0");
@@ -99,6 +117,15 @@ const addCustomer = async (customer) => {
     // console.log(product)
     const result = await insertRecord(`INSERT INTO tbl_customer (name,address,phone_number) VALUES ('${customer.name}','${customer.address}','${customer.phone_number}')`);
     return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteCustomer = async (id) => {
+  try {
+    const result = await insertRecord(`UPDATE tbl_customer SET delete_status = 1 WHERE id = ${id}`);
+    return true;
   } catch (error) {
     console.log(error);
   }
@@ -144,6 +171,15 @@ const getOrder = async () => {
   try {
     const result = await getAllRecord(`SELECT tbl_order.id as list_id,tbl_order.order_id,tbl_order.invoice_id,tbl_order.customer_id,tbl_order.order_date,tbl_order.items,tbl_order.sub_total,tbl_order.discount,tbl_order.total,tbl_order.payment_mode,tbl_order.paid,tbl_order.delete_status,tbl_customer.id,tbl_customer.name FROM tbl_order INNER JOIN tbl_customer ON tbl_order.customer_id = tbl_customer.id where tbl_order.delete_status = 0`);
     return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteOrder = async (id) => {
+  try {
+    const result = await insertRecord(`UPDATE tbl_order SET delete_status = 1 WHERE id = ${id}`);
+    return true;
   } catch (error) {
     console.log(error);
   }
@@ -211,14 +247,18 @@ module.exports = {
   deleteCategory,
   getProduct,
   addProduct,
+  deleteProduct,
   getDiscount,
   addDiscount,
+  deleteDiscount,
   getCustomer,
   addCustomer,
+  deleteCustomer,
   getInvoiceCount,
   getProductById,
   getDiscountById,
   addOrder,
   getOrder,
+  deleteOrder,
   getUser,
 };

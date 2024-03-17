@@ -64,5 +64,11 @@
       <%- include('../layouts/footer_js') %>
       <!-- <script src="../../plugin/datatable/main.js"></script> -->
       <script defer src="../../render/order/index.js"></script>
+      <script type="text/javascript">
+         $(document).on('click','.delete_order',function(){
+            let id = $(this).data('id');
+            deleteOrderData(id);
+         });
+      </script>
    </body>
 </html>

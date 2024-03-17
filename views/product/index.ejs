@@ -36,6 +36,7 @@
                                     <th>Tax Type</th>
                                     <th>Stock Out</th>
                                     <th>Status</th>
+                                    <th>Delete</th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -63,5 +64,11 @@
       <%- include('../layouts/footer_js') %>
       <!-- <script src="../../plugin/datatable/main.js"></script> -->
       <script defer src="../../render/product/index.js"></script>
+      <script type="text/javascript">
+         $(document).on('click','.delete_product',function(){
+            let id = $(this).data('id');
+            deleteProductData(id);
+         });
+      </script>
    </body>
 </html>

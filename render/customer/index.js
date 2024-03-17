@@ -1,4 +1,4 @@
-const  {getCustomer} = require('../../database/query');
+const  {getCustomer,deleteCustomer} = require('../../database/query');
 const list_table     = document.querySelector("#customer_list");
 let lists = [];
 
@@ -15,6 +15,7 @@ function renderLists(tasks) {
         <td>`+t.phone_number+`</td>
         <td>`+order_count+`</td>
         <td>`+status+`</td>
+        <td class='text-center'><a class="btn btn-success me-1 delete_customer" data-id=`+t.id+`><i class="fa fa-trash"></i></a></td>
       </tr>`
   });
     $('#customer_list tbody').append(html_value);
@@ -38,6 +39,13 @@ window.addEventListener('load', function()
 
 async function getCustomerData() 
 {
+  $("#customer_list tbody").empty();
   lists = await getCustomer();
   renderLists(lists);
+}
+
+async function deleteCustomerData(id) 
+{
+  let delete_customer = await deleteCustomer(id);
+  getCustomerData();
 }

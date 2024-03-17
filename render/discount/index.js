@@ -1,4 +1,4 @@
-const  {getDiscount} = require('../../database/query');
+const  {getDiscount,deleteDiscount} = require('../../database/query');
 let lists = [];
 
 function renderLists(tasks) {
@@ -14,6 +14,7 @@ function renderLists(tasks) {
         <td>`+discount_type+`</td>
         <td>`+t.discount_value+`</td>
         <td>`+status+`</td>
+        <td class='text-center'><a class="btn btn-success me-1 delete_discount" data-id=`+t.id+`><i class="fa fa-trash"></i></a></td>
       </tr>`
   });
   // <td><a href="" class="btn btn-success me-1 ml-1 mr-1"><i class="fas fa-eye"></i></a></td>
@@ -38,6 +39,13 @@ window.addEventListener('load', function()
 
 async function getDiscountData() 
 {
+  $("#discount_list tbody").empty();
   lists = await getDiscount();
   renderLists(lists);
+}
+
+async function deleteDiscountData(id) 
+{
+  let delete_discount = await deleteDiscount(id);
+  getDiscountData();
 }
