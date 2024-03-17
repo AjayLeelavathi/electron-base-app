@@ -3,7 +3,16 @@ const { getConnection } = require('./connection');
 
 const getCategory = async () => {
   try {
-    const result = await getAllRecord("SELECT * FROM tbl_category where status = 1");
+    const result = await getAllRecord("SELECT * FROM tbl_category where delete_status = 0");
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getCategoryById = async (id) => {
+  try {
+    const result = await getOneRecord(`SELECT * FROM tbl_category where id = ${id}`);
     return result;
   } catch (error) {
     console.log(error);
@@ -14,6 +23,25 @@ const addCategory = async (category) => {
   try {
     const result = await insertRecord(`INSERT INTO tbl_category (name,description) VALUES ('${category.name}','${category.description}')`);
     return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const updateCategory = async (category) => {
+  try {
+    let id = parseInt(category.id);
+    const result = await insertRecord(`UPDATE tbl_category SET name = ${category.name} WHERE id = ${id}`);
+    return true;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteCategory = async (id) => {
+  try {
+    const result = await insertRecord(`UPDATE tbl_category SET delete_status = 1 WHERE id = ${id}`);
+    return true;
   } catch (error) {
     console.log(error);
   }
@@ -161,9 +189,26 @@ const insertRecord = async(query) =>{
   });
 };
 
+// const updateRecord = async(query,params) =>{
+//   const conn = await getConnection();
+//   conn.run(query, params);
+//   // return new Promise((resolve, reject) => {
+//   //     conn.run(query, function(err) {
+//   //       if (err) {
+//   //         reject(err);
+//   //         return;
+//   //       }
+//   //       resolve(this.lastID);
+//   //   });
+//   // });
+// };
+
 module.exports = {
   getCategory,
+  getCategoryById,
   addCategory,
+  updateCategory,
+  deleteCategory,
   getProduct,
   addProduct,
   getDiscount,

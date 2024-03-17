@@ -20,24 +20,25 @@
                   <!-- DataTales Example -->
                   <div class="card shadow mb-4">
                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Category List</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Edit Category</h6>
                      </div>
                      <div class="card-body">
-                        <div class="table-responsive">
-                           <table class="table table-bordered" id="category_list" width="100%" cellspacing="0">
-                              <thead>
-                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th class="text-center">Edit</th>
-                                    <th class="text-center">Delete</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                              </tbody>
-                           </table>
-                        </div>
+                        <form id="edit_category_form">
+                           <div class="form-row">
+                              <div class="form-group col-md-6">
+                                 <label for="name" class="col-form-label">Category Name</label>
+                                  <input type="hidden" id="edit_category_id" name="edit_category_id" value="<%= category_date.id %>">
+                                 <input type="text" name="edit_category_name" id="edit_category_name" class="form-control" id="inputEmail4" placeholder="Name" value="<%= category_date.name %>">
+                              </div>
+                           </div>
+                           <div class="form-row">
+                              <div class="form-group col-md-6">
+                                 <label for="password" class="col-form-label">Category Description</label>
+                                 <textarea name="edit_category_description" id="edit_category_description" class="form-control" placeholder="Description"><%= category_date.description %></textarea>
+                              </div>
+                           </div>
+                           <button type="submit" id="=edit_category" class="btn btn-primary">Edit Category</button>
+                        </form>
                      </div>
                   </div>
                </div>
@@ -58,16 +59,7 @@
       <!-- <script src="../../admin/vendor/jquery/jquery.min.js"></script> -->
       <%- include('../layouts/footer_js') %>
       <!-- <script src="../../plugin/datatable/main.js"></script> -->
-      <script defer src="../../render/category/index.js"></script>
-      <script type="text/javascript">
-         $(document).on('click','.delete_category',function(){
-            let id = $(this).data('id');
-            deleteCategoryData(id);
-         });
-         $(document).on('click','.edit_category',function(){
-            let id = $(this).data('id');
-            editCategoryData(id);
-         });
-      </script>
+      <script src="../../plugin/validation/validation.js"></script>
+      <script defer src="../../render/category/edit.js"></script>
    </body>
 </html>

@@ -1,3 +1,8 @@
 .error{
-  font-size: 12px;
+  font-size: 16px;
+  color: #f30808;
+  position: unset;
+  line-height: unset;
+  width: 100%;
+  border-color: #f30808;
 }
